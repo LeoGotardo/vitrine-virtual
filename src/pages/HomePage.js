@@ -7,24 +7,31 @@ import ProductCard from '../components/ProductCard';
 const API_URL = 'http://localhost:3001';
 
 const SkeletonCard = () => (
-  <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden animate-pulse">
-    <div className="h-52 bg-gray-200" />
-    <div className="p-4 space-y-2">
-      <div className="h-3 bg-gray-200 rounded w-1/4" />
-      <div className="h-4 bg-gray-200 rounded w-3/4" />
-      <div className="h-3 bg-gray-200 rounded w-1/2" />
-      <div className="h-6 bg-gray-200 rounded w-1/3 mt-4" />
+  <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 overflow-hidden animate-pulse">
+    <div className="h-52 bg-gray-200 dark:bg-gray-800" />
+    <div className="p-4 space-y-2.5">
+      <div className="h-3 bg-gray-200 dark:bg-gray-800 rounded w-1/4" />
+      <div className="h-4 bg-gray-200 dark:bg-gray-800 rounded w-3/4" />
+      <div className="h-3 bg-gray-200 dark:bg-gray-800 rounded w-1/2" />
+      <div className="h-6 bg-gray-200 dark:bg-gray-800 rounded w-1/3 mt-4" />
     </div>
   </div>
 );
 
-const SectionHeader = ({ title, subtitle }) => (
-  <div className="flex items-start gap-3 mb-7">
-    <div className="w-1 h-8 bg-blue-600 rounded-full mt-0.5 shrink-0" />
-    <div>
-      <h2 className="text-2xl font-bold text-gray-900">{title}</h2>
-      {subtitle && <p className="text-gray-500 text-sm mt-0.5">{subtitle}</p>}
+const SectionHeader = ({ title, subtitle, count }) => (
+  <div className="flex items-start justify-between mb-7">
+    <div className="flex items-start gap-3">
+      <div className="w-1 h-8 bg-blue-600 rounded-full mt-0.5 shrink-0" />
+      <div>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50">{title}</h2>
+        {subtitle && <p className="text-gray-500 dark:text-gray-400 text-sm mt-0.5">{subtitle}</p>}
+      </div>
     </div>
+    {count != null && (
+      <span className="text-xs font-semibold bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 px-2.5 py-1 rounded-full self-center">
+        {count} {count === 1 ? 'item' : 'itens'}
+      </span>
+    )}
   </div>
 );
 
@@ -67,24 +74,33 @@ const HomePage = ({ onProductClick, onNavigate, scrollTo }) => {
   const emOferta = produtos.filter((p) => p.emOferta);
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-950 flex flex-col transition-colors duration-200">
       <Navbar onNavigate={handleNavigate} />
 
       {/* Hero */}
-      <div className="bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-700 text-white">
-        <div className="container mx-auto px-4 py-20 text-center">
-          <span className="inline-block bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full mb-4 tracking-wide uppercase">
+      <div className="relative bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-700 text-white overflow-hidden">
+        {/* Dot grid decoration */}
+        <div
+          className="absolute inset-0 opacity-10"
+          style={{
+            backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
+            backgroundSize: '28px 28px',
+          }}
+        />
+        <div className="relative container mx-auto px-4 py-24 text-center">
+          <span className="inline-block bg-white/15 backdrop-blur-sm text-white text-xs font-semibold px-4 py-1.5 rounded-full mb-5 tracking-widest uppercase border border-white/20">
             Bem-vindo à TechStore
           </span>
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-4 leading-tight">
-            Tecnologia de ponta,<br />os melhores preços
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-5 leading-tight tracking-tight">
+            Tecnologia de ponta,<br />
+            <span className="text-blue-200">os melhores preços</span>
           </h1>
-          <p className="text-blue-100 text-lg mb-8 max-w-md mx-auto">
-            Encontre notebooks, periféricos e muito mais com qualidade garantida.
+          <p className="text-blue-100 text-lg mb-10 max-w-md mx-auto">
+            Notebooks, periféricos e muito mais — com qualidade e preço garantidos.
           </p>
           <button
             onClick={() => produtosRef.current?.scrollIntoView({ behavior: 'smooth' })}
-            className="inline-flex items-center gap-2 bg-white text-blue-600 font-bold px-6 py-3 rounded-full hover:bg-blue-50 transition-colors shadow-lg"
+            className="inline-flex items-center gap-2 bg-white text-blue-600 font-bold px-7 py-3.5 rounded-full hover:bg-blue-50 transition-colors shadow-xl shadow-blue-900/30"
           >
             Ver produtos
             <ChevronDown className="w-4 h-4" />
@@ -92,17 +108,20 @@ const HomePage = ({ onProductClick, onNavigate, scrollTo }) => {
         </div>
       </div>
 
-      <main className="container mx-auto px-4 py-12 flex-1">
-        {/* Error */}
+      <main className="container mx-auto px-4 py-14 flex-1">
         {erro && (
-          <div className="bg-red-50 border border-red-200 text-red-600 rounded-xl p-4 mb-8 text-center">
+          <div className="bg-red-50 dark:bg-red-950/50 border border-red-200 dark:border-red-900 text-red-600 dark:text-red-400 rounded-xl p-4 mb-10 text-center text-sm">
             {erro}
           </div>
         )}
 
         {/* Produtos */}
-        <section id="produtos" ref={produtosRef} className="mb-16">
-          <SectionHeader title="Produtos" subtitle="Todos os itens disponíveis na loja" />
+        <section id="produtos" ref={produtosRef} className="mb-20">
+          <SectionHeader
+            title="Produtos"
+            subtitle="Todos os itens disponíveis na loja"
+            count={!loading ? produtos.length : null}
+          />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {loading
               ? Array.from({ length: 6 }).map((_, i) => <SkeletonCard key={i} />)
@@ -119,12 +138,26 @@ const HomePage = ({ onProductClick, onNavigate, scrollTo }) => {
         {/* Ofertas */}
         {!loading && emOferta.length > 0 && (
           <section id="ofertas" ref={ofertasRef}>
-            <div className="bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl p-8 mb-7">
-              <div className="flex items-center gap-2 mb-1">
-                <Zap className="w-5 h-5 text-white" />
-                <h2 className="text-2xl font-bold text-white">Ofertas da Semana</h2>
+            <div className="relative bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl p-8 mb-7 overflow-hidden">
+              <div
+                className="absolute inset-0 opacity-10"
+                style={{
+                  backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
+                  backgroundSize: '24px 24px',
+                }}
+              />
+              <div className="relative flex items-start justify-between">
+                <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <Zap className="w-5 h-5 text-white" />
+                    <h2 className="text-2xl font-bold text-white">Ofertas da Semana</h2>
+                  </div>
+                  <p className="text-orange-100 text-sm">Preços imperdíveis por tempo limitado</p>
+                </div>
+                <span className="text-xs font-semibold bg-white/20 text-white px-2.5 py-1 rounded-full self-center">
+                  {emOferta.length} {emOferta.length === 1 ? 'oferta' : 'ofertas'}
+                </span>
               </div>
-              <p className="text-orange-100 text-sm">Preços imperdíveis por tempo limitado</p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {emOferta.map((produto) => (

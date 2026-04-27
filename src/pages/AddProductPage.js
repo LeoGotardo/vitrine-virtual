@@ -7,6 +7,27 @@ const API_URL = 'http://localhost:3001';
 
 const emptySpec = () => ({ chave: '', valor: '' });
 
+const inputClass =
+  'w-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow';
+
+const SectionCard = ({ title, children }) => (
+  <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm p-6 space-y-5">
+    <h3 className="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest">
+      {title}
+    </h3>
+    {children}
+  </div>
+);
+
+const Field = ({ label, required, children }) => (
+  <div>
+    <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
+      {label}{required && <span className="text-red-500 ml-0.5">*</span>}
+    </label>
+    {children}
+  </div>
+);
+
 const AddProductPage = ({ onNavigate }) => {
   const [form, setForm] = useState({
     nome: '',
@@ -74,53 +95,37 @@ const AddProductPage = ({ onNavigate }) => {
     }
   };
 
-  const Field = ({ label, required, children }) => (
-    <div>
-      <label className="block text-sm font-semibold text-gray-700 mb-1.5">
-        {label}{required && <span className="text-red-500 ml-0.5">*</span>}
-      </label>
-      {children}
-    </div>
-  );
-
-  const inputClass =
-    'w-full border border-gray-200 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow';
-
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-950 flex flex-col transition-colors duration-200">
       <Navbar onNavigate={onNavigate} />
 
       <main className="container mx-auto px-4 py-10 flex-1">
         <div className="max-w-2xl mx-auto">
           <div className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-900">Cadastrar Produto</h2>
-            <p className="text-gray-500 text-sm mt-1">Preencha as informações do novo produto</p>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50">Cadastrar Produto</h2>
+            <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">
+              Preencha as informações do novo produto
+            </p>
           </div>
 
           {sucesso && (
-            <div className="flex items-center gap-3 bg-green-50 border border-green-200 text-green-700 rounded-xl p-4 mb-6">
+            <div className="flex items-center gap-3 bg-green-50 dark:bg-green-950/40 border border-green-200 dark:border-green-900/50 text-green-700 dark:text-green-400 rounded-xl p-4 mb-6">
               <CheckCircle className="w-5 h-5 shrink-0" />
-              <span className="font-medium">Produto cadastrado com sucesso! Redirecionando...</span>
+              <span className="font-medium text-sm">Produto cadastrado com sucesso! Redirecionando...</span>
             </div>
           )}
 
           {erro && (
-            <div className="bg-red-50 border border-red-200 text-red-600 rounded-xl p-4 mb-6 text-sm">
+            <div className="bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/50 text-red-600 dark:text-red-400 rounded-xl p-4 mb-6 text-sm">
               {erro}
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Basic info card */}
-            <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 space-y-5">
-              <h3 className="text-sm font-bold text-gray-500 uppercase tracking-wide">
-                Informações Básicas
-              </h3>
-
+          <form onSubmit={handleSubmit} className="space-y-5">
+            <SectionCard title="Informações Básicas">
               <Field label="Nome" required>
                 <input name="nome" value={form.nome} onChange={handleChange} required className={inputClass} />
               </Field>
-
               <Field label="Descrição">
                 <textarea
                   name="descricao"
@@ -130,16 +135,12 @@ const AddProductPage = ({ onNavigate }) => {
                   className={`${inputClass} resize-none`}
                 />
               </Field>
-
               <Field label="Fabricante">
                 <input name="fabricante" value={form.fabricante} onChange={handleChange} className={inputClass} />
               </Field>
-            </div>
+            </SectionCard>
 
-            {/* Pricing card */}
-            <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 space-y-5">
-              <h3 className="text-sm font-bold text-gray-500 uppercase tracking-wide">Preço</h3>
-
+            <SectionCard title="Preço">
               <div className="grid grid-cols-2 gap-4">
                 <Field label="Preço (R$)" required>
                   <input
@@ -167,27 +168,25 @@ const AddProductPage = ({ onNavigate }) => {
                 </Field>
               </div>
 
-              <label className="flex items-center gap-3 cursor-pointer">
+              <label className="flex items-center gap-3 cursor-pointer select-none">
                 <div className="relative">
                   <input
-                    id="emOferta"
                     name="emOferta"
                     type="checkbox"
                     checked={form.emOferta}
                     onChange={handleChange}
                     className="sr-only peer"
                   />
-                  <div className="w-10 h-6 bg-gray-200 rounded-full peer-checked:bg-blue-600 transition-colors" />
+                  <div className="w-10 h-6 bg-gray-200 dark:bg-gray-700 rounded-full peer-checked:bg-blue-600 transition-colors" />
                   <div className="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform peer-checked:translate-x-4" />
                 </div>
-                <span className="text-sm font-medium text-gray-700">Marcar como oferta</span>
+                <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Marcar como oferta
+                </span>
               </label>
-            </div>
+            </SectionCard>
 
-            {/* Image card */}
-            <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 space-y-4">
-              <h3 className="text-sm font-bold text-gray-500 uppercase tracking-wide">Imagem</h3>
-
+            <SectionCard title="Imagem">
               <Field label="URL da Imagem">
                 <input
                   name="imagem"
@@ -197,28 +196,22 @@ const AddProductPage = ({ onNavigate }) => {
                   className={inputClass}
                 />
               </Field>
-
               {form.imagem ? (
                 <img
                   src={form.imagem}
                   alt="preview"
-                  className="h-40 w-full object-contain rounded-xl border border-gray-100 bg-gray-50"
+                  className="h-40 w-full object-contain rounded-xl border border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-800"
                   onError={(e) => (e.currentTarget.style.display = 'none')}
                 />
               ) : (
-                <div className="h-40 flex flex-col items-center justify-center rounded-xl border-2 border-dashed border-gray-200 text-gray-300">
+                <div className="h-40 flex flex-col items-center justify-center rounded-xl border-2 border-dashed border-gray-200 dark:border-gray-700 text-gray-300 dark:text-gray-600">
                   <ImageIcon className="w-8 h-8 mb-1" />
                   <span className="text-xs">Pré-visualização</span>
                 </div>
               )}
-            </div>
+            </SectionCard>
 
-            {/* Specs card */}
-            <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 space-y-4">
-              <h3 className="text-sm font-bold text-gray-500 uppercase tracking-wide">
-                Especificações Técnicas
-              </h3>
-
+            <SectionCard title="Especificações Técnicas">
               <div className="space-y-2.5">
                 {specs.map((spec, i) => (
                   <div key={i} className="flex gap-2 items-center">
@@ -238,23 +231,22 @@ const AddProductPage = ({ onNavigate }) => {
                       type="button"
                       onClick={() => removeSpec(i)}
                       disabled={specs.length === 1}
-                      className="p-2 text-gray-300 hover:text-red-400 disabled:opacity-30 transition-colors shrink-0"
+                      className="p-2 text-gray-300 dark:text-gray-600 hover:text-red-400 dark:hover:text-red-400 disabled:opacity-30 transition-colors shrink-0"
                     >
                       <Trash2 className="w-4 h-4" />
                     </button>
                   </div>
                 ))}
               </div>
-
               <button
                 type="button"
                 onClick={addSpec}
-                className="flex items-center gap-1.5 text-sm text-blue-600 hover:text-blue-800 font-medium transition-colors"
+                className="flex items-center gap-1.5 text-sm text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium transition-colors"
               >
                 <Plus className="w-4 h-4" />
                 Adicionar especificação
               </button>
-            </div>
+            </SectionCard>
 
             <button
               type="submit"
