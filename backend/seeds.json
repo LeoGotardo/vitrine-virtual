@@ -1,0 +1,272 @@
+[
+  {
+    "nome": "Notebook Dell Inspiron 15",
+    "descricao": "Notebook para uso profissional e pessoal",
+    "preco": 3499.99,
+    "precoOriginal": null,
+    "imagem": "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=400&h=300&fit=crop",
+    "fabricante": "Dell",
+    "emOferta": 0,
+    "especificacoes": { "processador": "Intel Core i5 11ª Geração", "memoria": "8GB RAM DDR4", "armazenamento": "256GB SSD", "tela": "15.6 polegadas Full HD", "placaVideo": "Intel UHD Graphics" }
+  },
+  {
+    "nome": "Mouse Logitech MX Master 3",
+    "descricao": "Mouse ergonômico wireless premium",
+    "preco": 439.92,
+    "precoOriginal": 549.90,
+    "imagem": "https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&h=300&fit=crop",
+    "fabricante": "Logitech",
+    "emOferta": 1,
+    "especificacoes": { "tipo": "Wireless", "conexao": "Bluetooth e USB", "bateria": "Até 70 dias com carga completa", "dpi": "Até 4000 DPI", "botoes": "7 botões programáveis" }
+  },
+  {
+    "nome": "Teclado Mecânico Keychron K2",
+    "descricao": "Teclado mecânico compacto wireless",
+    "preco": 799.00,
+    "precoOriginal": null,
+    "imagem": "https://images.unsplash.com/photo-1595225476474-87563907a212?w=400&h=300&fit=crop",
+    "fabricante": "Keychron",
+    "emOferta": 0,
+    "especificacoes": { "layout": "75% compacto", "switches": "Gateron Brown", "conexao": "Bluetooth e USB-C", "bateria": "Até 240 horas", "retroiluminacao": "RGB personalizável" }
+  },
+  {
+    "nome": "Monitor LG UltraWide 29\"",
+    "descricao": "Monitor ultrawide para produtividade",
+    "preco": 1299.99,
+    "precoOriginal": null,
+    "imagem": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400&h=300&fit=crop",
+    "fabricante": "LG",
+    "emOferta": 0,
+    "especificacoes": { "tamanho": "29 polegadas", "resolucao": "2560x1080 (UltraWide Full HD)", "taxaAtualizacao": "75Hz", "painel": "IPS", "conectividade": "HDMI, DisplayPort" }
+  },
+  {
+    "nome": "Headset HyperX Cloud II",
+    "descricao": "Headset gamer com som surround 7.1",
+    "preco": 374.93,
+    "precoOriginal": 499.90,
+    "imagem": "https://images.unsplash.com/photo-1599669454699-248893623440?w=400&h=300&fit=crop",
+    "fabricante": "HyperX",
+    "emOferta": 1,
+    "especificacoes": { "tipo": "Over-ear fechado", "som": "Virtual Surround 7.1", "microfone": "Removível com cancelamento de ruído", "conexao": "USB e P2 3.5mm", "compatibilidade": "PC, PS4, Xbox, Nintendo Switch" }
+  },
+  {
+    "nome": "Webcam Logitech C920",
+    "descricao": "Webcam Full HD para videoconferências",
+    "preco": 319.20,
+    "precoOriginal": 399.00,
+    "imagem": "https://images.unsplash.com/photo-1614624532983-4ce03382d63d?w=400&h=300&fit=crop",
+    "fabricante": "Logitech",
+    "emOferta": 1,
+    "especificacoes": { "resolucao": "1080p Full HD a 30fps", "foco": "Automático", "microfones": "Estéreo integrados", "campoVisao": "78 graus", "compatibilidade": "Windows, Mac, Chrome OS" }
+  },
+  {
+    "nome": "SSD Samsung 970 EVO Plus 1TB",
+    "descricao": "SSD NVMe de alta performance para desktop e notebook",
+    "preco": 549.90,
+    "precoOriginal": 699.90,
+    "imagem": "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=400&h=300&fit=crop",
+    "fabricante": "Samsung",
+    "emOferta": 1,
+    "especificacoes": { "capacidade": "1TB", "interface": "NVMe M.2", "leituraSequencial": "3500 MB/s", "gravaturaSequencial": "3300 MB/s", "garantia": "5 anos" }
+  },
+  {
+    "nome": "Placa de Vídeo RTX 4060 8GB",
+    "descricao": "GPU para jogos e criação de conteúdo em 1080p/1440p",
+    "preco": 2199.00,
+    "precoOriginal": null,
+    "imagem": "https://images.unsplash.com/photo-1591488320449-011701bb6704?w=400&h=300&fit=crop",
+    "fabricante": "NVIDIA",
+    "emOferta": 0,
+    "especificacoes": { "vram": "8GB GDDR6", "nucleosCUDA": "3072", "consumo": "115W", "saidas": "HDMI 2.1, 3x DisplayPort 1.4", "barramento": "PCIe 4.0 x8" }
+  },
+  {
+    "nome": "Processador AMD Ryzen 5 7600X",
+    "descricao": "Processador de alto desempenho para jogos e workloads",
+    "preco": 1349.00,
+    "precoOriginal": 1599.00,
+    "imagem": "https://images.unsplash.com/photo-1555617981-dac3772ad9b1?w=400&h=300&fit=crop",
+    "fabricante": "AMD",
+    "emOferta": 1,
+    "especificacoes": { "nucleos": "6 núcleos / 12 threads", "clockBase": "4.7 GHz", "clockBoost": "Até 5.3 GHz", "tdp": "105W", "socket": "AM5" }
+  },
+  {
+    "nome": "Memória RAM Corsair Vengeance 32GB DDR5",
+    "descricao": "Kit de memória DDR5 de alta frequência",
+    "preco": 649.90,
+    "precoOriginal": null,
+    "imagem": "https://images.unsplash.com/photo-1562976540-1502c2145851?w=400&h=300&fit=crop",
+    "fabricante": "Corsair",
+    "emOferta": 0,
+    "especificacoes": { "capacidade": "32GB (2x16GB)", "tipo": "DDR5", "frequencia": "5600 MHz", "latencia": "CL36", "tensao": "1.25V" }
+  },
+  {
+    "nome": "Fonte Corsair RM850x 850W",
+    "descricao": "Fonte modular 80 Plus Gold silenciosa",
+    "preco": 789.00,
+    "precoOriginal": null,
+    "imagem": "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=400&h=300&fit=crop",
+    "fabricante": "Corsair",
+    "emOferta": 0,
+    "especificacoes": { "potencia": "850W", "certificacao": "80 Plus Gold", "modularidade": "Totalmente modular", "ventoinha": "135mm com modo zero RPM", "garantia": "10 anos" }
+  },
+  {
+    "nome": "Gabinete NZXT H510",
+    "descricao": "Gabinete ATX compacto com painel de vidro temperado",
+    "preco": 469.00,
+    "precoOriginal": 529.00,
+    "imagem": "https://images.unsplash.com/photo-1587145820266-a5951ee6f620?w=400&h=300&fit=crop",
+    "fabricante": "NZXT",
+    "emOferta": 1,
+    "especificacoes": { "formato": "Mid-Tower ATX", "material": "Aço e vidro temperado", "baias": "2x 2.5\", 1x 3.5\"", "ventoinhas": "2x 120mm inclusas", "dimensoes": "428 x 210 x 460mm" }
+  },
+  {
+    "nome": "Placa-Mãe ASUS ROG Strix B650-A",
+    "descricao": "Placa-mãe ATX para AMD AM5 com Wi-Fi 6E",
+    "preco": 1899.00,
+    "precoOriginal": null,
+    "imagem": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=300&fit=crop",
+    "fabricante": "ASUS",
+    "emOferta": 0,
+    "especificacoes": { "socket": "AM5", "chipset": "AMD B650", "slots": "4x DDR5, 3x M.2, PCIe 5.0", "rede": "2.5G LAN + Wi-Fi 6E", "audio": "Realtek ALC4080" }
+  },
+  {
+    "nome": "Cooler CPU Noctua NH-D15",
+    "descricao": "Cooler de ar premium com dupla torre e dupla ventoinha",
+    "preco": 599.00,
+    "precoOriginal": null,
+    "imagem": "https://images.unsplash.com/photo-1600348712270-5af9e3590625?w=400&h=300&fit=crop",
+    "fabricante": "Noctua",
+    "emOferta": 0,
+    "especificacoes": { "tipo": "Dupla torre", "ventoinhas": "2x NF-A15 140mm", "tdpSuportado": "Até 250W", "altura": "165mm", "compatibilidade": "Intel LGA1700, AMD AM5/AM4" }
+  },
+  {
+    "nome": "Teclado Logitech MX Keys",
+    "descricao": "Teclado wireless de baixo perfil para produtividade",
+    "preco": 699.00,
+    "precoOriginal": 799.00,
+    "imagem": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&h=300&fit=crop",
+    "fabricante": "Logitech",
+    "emOferta": 1,
+    "especificacoes": { "layout": "Full size com numpad", "conexao": "Bluetooth e USB (Logi Bolt)", "bateria": "Até 10 dias com retroiluminação", "retroiluminacao": "Adaptativa por tecla", "compatibilidade": "Windows, Mac, Linux" }
+  },
+  {
+    "nome": "Monitor Samsung Odyssey G5 27\"",
+    "descricao": "Monitor gamer curvo 1440p 165Hz",
+    "preco": 1499.00,
+    "precoOriginal": 1799.00,
+    "imagem": "https://images.unsplash.com/photo-1616763355548-1b606f439f86?w=400&h=300&fit=crop",
+    "fabricante": "Samsung",
+    "emOferta": 1,
+    "especificacoes": { "tamanho": "27 polegadas", "resolucao": "2560x1440 (QHD)", "taxaAtualizacao": "165Hz", "painel": "VA Curvo 1000R", "tempoResposta": "1ms (MPRT)" }
+  },
+  {
+    "nome": "Roteador TP-Link Archer AX73",
+    "descricao": "Roteador Wi-Fi 6 AX5400 dual band",
+    "preco": 599.90,
+    "precoOriginal": null,
+    "imagem": "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=400&h=300&fit=crop",
+    "fabricante": "TP-Link",
+    "emOferta": 0,
+    "especificacoes": { "padrao": "Wi-Fi 6 (802.11ax)", "velocidade": "AX5400 (574Mbps 2.4GHz + 4804Mbps 5GHz)", "antenas": "6 antenas externas", "portas": "5x Gigabit LAN/WAN", "processador": "Tri-core 1.5GHz" }
+  },
+  {
+    "nome": "Fone Sony WH-1000XM5",
+    "descricao": "Fone over-ear com cancelamento de ruído líder de mercado",
+    "preco": 1699.00,
+    "precoOriginal": 1999.00,
+    "imagem": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=300&fit=crop",
+    "fabricante": "Sony",
+    "emOferta": 1,
+    "especificacoes": { "cancelamentoRuido": "ANC adaptativo com 8 microfones", "bateria": "Até 30 horas", "carga": "USB-C, 3 min = 3 horas", "codec": "LDAC, AAC, SBC", "peso": "250g" }
+  },
+  {
+    "nome": "Tablet Samsung Galaxy Tab S9",
+    "descricao": "Tablet premium com tela AMOLED e S Pen inclusa",
+    "preco": 3299.00,
+    "precoOriginal": null,
+    "imagem": "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=400&h=300&fit=crop",
+    "fabricante": "Samsung",
+    "emOferta": 0,
+    "especificacoes": { "tela": "11\" Dynamic AMOLED 2X 120Hz", "processador": "Snapdragon 8 Gen 2", "memoria": "8GB RAM + 128GB", "bateria": "8400mAh", "resistencia": "IP68" }
+  },
+  {
+    "nome": "Impressora HP LaserJet Pro M404n",
+    "descricao": "Impressora laser monocromática para escritório",
+    "preco": 1249.00,
+    "precoOriginal": 1449.00,
+    "imagem": "https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?w=400&h=300&fit=crop",
+    "fabricante": "HP",
+    "emOferta": 1,
+    "especificacoes": { "tipo": "Laser monocromático", "velocidade": "38 ppm", "resolucao": "1200 x 1200 dpi", "conectividade": "USB, Ethernet", "capacidade": "Bandeja de 250 folhas" }
+  },
+  {
+    "nome": "Cabo HDMI 2.1 Anker 2m",
+    "descricao": "Cabo HDMI 2.1 com suporte a 8K e 48Gbps",
+    "preco": 89.90,
+    "precoOriginal": 119.90,
+    "imagem": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop",
+    "fabricante": "Anker",
+    "emOferta": 1,
+    "especificacoes": { "versao": "HDMI 2.1", "comprimento": "2 metros", "larguraDeBanda": "48Gbps", "resolucao": "Suporta até 8K 60Hz / 4K 120Hz", "compatibilidade": "PS5, Xbox Series X, PC" }
+  },
+  {
+    "nome": "Hub USB-C Anker 7-em-1",
+    "descricao": "Dock USB-C com HDMI 4K, USB 3.0, leitor de cartão e mais",
+    "preco": 249.90,
+    "precoOriginal": null,
+    "imagem": "https://images.unsplash.com/photo-1625837885701-48769de0a6ed?w=400&h=300&fit=crop",
+    "fabricante": "Anker",
+    "emOferta": 0,
+    "especificacoes": { "portas": "HDMI 4K, 3x USB-A 3.0, USB-C dados, SD, microSD", "potenciaPassThrough": "100W Power Delivery", "compatibilidade": "Mac, Windows, iPad Pro", "dimensoes": "11 x 3.5 x 1.5cm", "garantia": "18 meses" }
+  },
+  {
+    "nome": "Suporte de Monitor Ergotron LX",
+    "descricao": "Braço articulado para monitor de até 34 polegadas",
+    "preco": 699.00,
+    "precoOriginal": null,
+    "imagem": "https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=400&h=300&fit=crop",
+    "fabricante": "Ergotron",
+    "emOferta": 0,
+    "especificacoes": { "suportePeso": "Até 11.3kg", "tamanhoPantalla": "Até 34 polegadas", "ajuste": "Altura, inclinação, rotação, giro 360°", "fixacao": "Mesa (grampo ou furo)", "vesa": "75x75mm e 100x100mm" }
+  },
+  {
+    "nome": "Mousepad Razer Goliathus Extended",
+    "descricao": "Mousepad XL de tecido para desk setup completo",
+    "preco": 199.90,
+    "precoOriginal": 249.90,
+    "imagem": "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400&h=300&fit=crop",
+    "fabricante": "Razer",
+    "emOferta": 1,
+    "especificacoes": { "dimensoes": "920 x 294 x 3mm", "superficie": "Tecido micro-texturizado", "base": "Borracha antiderrapante", "bordas": "Costuradas para durabilidade", "compatibilidade": "Todos os tipos de mouse" }
+  },
+  {
+    "nome": "Pen Drive Kingston DataTraveler 256GB USB 3.2",
+    "descricao": "Pen drive de alta velocidade para transferência de arquivos",
+    "preco": 149.90,
+    "precoOriginal": null,
+    "imagem": "https://images.unsplash.com/photo-1618354691438-25bc04584c23?w=400&h=300&fit=crop",
+    "fabricante": "Kingston",
+    "emOferta": 0,
+    "especificacoes": { "capacidade": "256GB", "interface": "USB 3.2 Gen 1", "leitura": "Até 130 MB/s", "gravacao": "Até 50 MB/s", "garantia": "5 anos" }
+  },
+  {
+    "nome": "Cadeira Gamer ThunderX3 TC5",
+    "descricao": "Cadeira gamer ergonômica com apoio lombar ajustável",
+    "preco": 1599.00,
+    "precoOriginal": 1899.00,
+    "imagem": "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=400&h=300&fit=crop",
+    "fabricante": "ThunderX3",
+    "emOferta": 1,
+    "especificacoes": { "material": "Couro PU respirável", "reclinavel": "Até 180 graus", "apoioDeBraco": "4D ajustável", "suportePeso": "Até 120kg", "altura": "Assento ajustável entre 44-54cm" }
+  },
+  {
+    "nome": "Controle Xbox Series Wireless",
+    "descricao": "Controle sem fio oficial para Xbox Series X|S e PC",
+    "preco": 399.00,
+    "precoOriginal": null,
+    "imagem": "https://images.unsplash.com/photo-1592840062661-a5a7f78e2056?w=400&h=300&fit=crop",
+    "fabricante": "Microsoft",
+    "emOferta": 0,
+    "especificacoes": { "conexao": "Wireless Xbox + Bluetooth", "bateria": "2x AA (até 40 horas)", "texturaGarantida": "Grip texturizado no verso e gatilhos", "portaFone": "P2 3.5mm", "compatibilidade": "Xbox Series X|S, Xbox One, PC, Mobile" }
+  }
+]

@@ -1,36 +1,38 @@
 import React from 'react';
 import { PlusCircle, Moon, Sun } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import logo from '../logo.svg';
 import { useTheme } from '../context/ThemeContext';
 
-const Navbar = ({ onNavigate }) => {
+const Navbar = () => {
   const { dark, toggle } = useTheme();
+  const navigate = useNavigate();
 
   return (
     <header className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 sticky top-0 z-50 shadow-sm">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         <button
-          onClick={() => onNavigate('home')}
+          onClick={() => navigate('/')}
           className="hover:opacity-75 transition-opacity"
         >
-          <img src={logo} alt="TechStore" className="h-8 w-auto dark:invert" />
+          <img src={logo} alt="TechStore" className="h-12 w-auto dark:invert" />
         </button>
 
         <nav className="flex items-center gap-1">
           <button
-            onClick={() => onNavigate('produtos')}
+            onClick={() => navigate('/', { state: { scrollTo: 'produtos' } })}
             className="px-4 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/50 rounded-lg transition-colors"
           >
             Produtos
           </button>
           <button
-            onClick={() => onNavigate('ofertas')}
+            onClick={() => navigate('/', { state: { scrollTo: 'ofertas' } })}
             className="px-4 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/50 rounded-lg transition-colors"
           >
             Ofertas
           </button>
           <button
-            onClick={() => onNavigate('cadastro')}
+            onClick={() => navigate('/add-product')}
             className="ml-2 flex items-center gap-1.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors"
           >
             <PlusCircle className="w-4 h-4" />

@@ -1,16 +1,55 @@
-import React, { useState } from 'react';
-import { MapPin, Truck, ShoppingCart, Tag, ChevronLeft, CheckCircle } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { MapPin, Truck, ShoppingCart, Tag, ChevronLeft, CheckCircle, ImageOff } from 'lucide-react';
+import { useParams, useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
+const API_URL = 'http://localhost:3001';
 const formatPrice = (preco) => preco.toFixed(2).replace('.', ',');
 
-const ProductDetailPage = ({ produto, onNavigate }) => {
+const ProductDetailPage = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const [produto, setProduto] = useState(null);
+  const [loadingProduto, setLoadingProduto] = useState(true);
+  const [erroProduto, setErroProduto] = useState('');
   const [cep, setCep] = useState('');
   const [endereco, setEndereco] = useState(null);
   const [loadingCep, setLoadingCep] = useState(false);
   const [erroCep, setErroCep] = useState('');
   const [comprado, setComprado] = useState(false);
+  const [imgError, setImgError] = useState(false);
+
+  useEffect(() => {
+    fetch(`${API_URL}/products/${id}`)
+      .then((res) => {
+        if (!res.ok) throw new Error('Produto não encontrado');
+        return res.json();
+      })
+      .then((data) => setProduto(data))
+      .catch((err) => setErroProduto(err.message))
+      .finally(() => setLoadingProduto(false));
+  }, [id]);
+
+  if (loadingProduto) {
+    return (
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-950 flex flex-col">
+        <Navbar />
+        <main className="flex-1 flex items-center justify-center text-gray-400">Carregando...</main>
+        <Footer />
+      </div>
+    );
+  }
+
+  if (erroProduto || !produto) {
+    return (
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-950 flex flex-col">
+        <Navbar />
+        <main className="flex-1 flex items-center justify-center text-red-500">{erroProduto || 'Produto não encontrado'}</main>
+        <Footer />
+      </div>
+    );
+  }
 
   const discount = produto.precoOriginal
     ? Math.round((1 - produto.preco / produto.precoOriginal) * 100)
@@ -41,11 +80,11 @@ const ProductDetailPage = ({ produto, onNavigate }) => {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950 flex flex-col transition-colors duration-200">
-      <Navbar onNavigate={onNavigate} />
+      <Navbar />
 
       <main className="container mx-auto px-4 py-8 flex-1">
         <button
-          onClick={() => onNavigate('home')}
+          onClick={() => navigate('/')}
           className="flex items-center gap-1.5 text-sm text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors mb-6"
         >
           <ChevronLeft className="w-4 h-4" />
@@ -56,18 +95,28 @@ const ProductDetailPage = ({ produto, onNavigate }) => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
 
             {/* Image panel */}
-            <div className="bg-gray-50 dark:bg-gray-800 flex items-center justify-center p-10 relative min-h-80 border-b md:border-b-0 md:border-r border-gray-100 dark:border-gray-800">
+            <div className="relative min-h-80 border-b md:border-b-0 md:border-r border-gray-100 dark:border-gray-800 overflow-hidden">
               {produto.emOferta && discount && (
-                <span className="absolute top-4 left-4 bg-red-500 text-white text-xs font-bold px-2.5 py-1 rounded-full flex items-center gap-1">
+                <span className="absolute top-4 left-4 z-10 bg-red-500 text-white text-xs font-bold px-2.5 py-1 rounded-full flex items-center gap-1">
                   <Tag className="w-3 h-3" />
                   -{discount}%
                 </span>
               )}
-              <img
-                src={produto.imagem}
-                alt={produto.nome}
-                className="max-w-full h-auto max-h-80 object-contain drop-shadow-md"
-              />
+              {imgError ? (
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-gray-100 dark:bg-gray-800">
+                  <div className="w-16 h-16 rounded-2xl bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+                    <ImageOff className="w-8 h-8 text-gray-400 dark:text-gray-500" />
+                  </div>
+                  <span className="text-xs text-gray-400 dark:text-gray-500">Imagem indisponível</span>
+                </div>
+              ) : (
+                <img
+                  src={produto.imagem}
+                  alt={produto.nome}
+                  className="absolute inset-0 w-full h-full object-cover"
+                  onError={() => setImgError(true)}
+                />
+              )}
             </div>
 
             {/* Info panel */}
@@ -201,7 +250,7 @@ const ProductDetailPage = ({ produto, onNavigate }) => {
         </div>
       </main>
 
-      <Footer onNavigate={onNavigate} />
+      <Footer />
     </div>
   );
 };

@@ -1,9 +1,10 @@
-import React from 'react';
-import { ArrowRight, Tag } from 'lucide-react';
+import React, { useState } from 'react';
+import { ArrowRight, Tag, ImageOff } from 'lucide-react';
 
 const formatPrice = (preco) => preco.toFixed(2).replace('.', ',');
 
 const ProductCard = ({ produto, onClick }) => {
+  const [imgError, setImgError] = useState(false);
   const discount = produto.precoOriginal
     ? Math.round((1 - produto.preco / produto.precoOriginal) * 100)
     : null;
@@ -19,11 +20,19 @@ const ProductCard = ({ produto, onClick }) => {
     >
       {/* Image */}
       <div className="h-52 overflow-hidden bg-gray-50 dark:bg-gray-800 relative">
-        <img
-          src={produto.imagem}
-          alt={produto.nome}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-        />
+        {imgError ? (
+          <div className="w-full h-full flex flex-col items-center justify-center gap-2 bg-gray-100 dark:bg-gray-800">
+            <ImageOff className="w-8 h-8 text-gray-300 dark:text-gray-600" />
+            <span className="text-xs text-gray-300 dark:text-gray-600">Imagem indisponível</span>
+          </div>
+        ) : (
+          <img
+            src={produto.imagem}
+            alt={produto.nome}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            onError={() => setImgError(true)}
+          />
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
         <div className="absolute bottom-3 left-1/2 -translate-x-1/2 translate-y-10 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">

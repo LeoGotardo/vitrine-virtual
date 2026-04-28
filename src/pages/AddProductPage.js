@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Plus, Trash2, CheckCircle, ImageIcon } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
@@ -28,7 +29,8 @@ const Field = ({ label, required, children }) => (
   </div>
 );
 
-const AddProductPage = ({ onNavigate }) => {
+const AddProductPage = () => {
+  const navigate = useNavigate();
   const [form, setForm] = useState({
     nome: '',
     descricao: '',
@@ -87,7 +89,7 @@ const AddProductPage = ({ onNavigate }) => {
         throw new Error(err.error || 'Erro ao cadastrar produto');
       }
       setSucesso(true);
-      setTimeout(() => onNavigate('home'), 1500);
+      setTimeout(() => navigate('/'), 1500);
     } catch (err) {
       setErro(err.message);
     } finally {
@@ -97,7 +99,7 @@ const AddProductPage = ({ onNavigate }) => {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950 flex flex-col transition-colors duration-200">
-      <Navbar onNavigate={onNavigate} />
+      <Navbar />
 
       <main className="container mx-auto px-4 py-10 flex-1">
         <div className="max-w-2xl mx-auto">
@@ -259,7 +261,7 @@ const AddProductPage = ({ onNavigate }) => {
         </div>
       </main>
 
-      <Footer onNavigate={onNavigate} />
+      <Footer />
     </div>
   );
 };

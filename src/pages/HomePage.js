@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ChevronDown, Zap } from 'lucide-react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ProductCard from '../components/ProductCard';
@@ -35,7 +36,9 @@ const SectionHeader = ({ title, subtitle, count }) => (
   </div>
 );
 
-const HomePage = ({ onProductClick, onNavigate, scrollTo }) => {
+const HomePage = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [produtos, setProdutos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [erro, setErro] = useState('');
@@ -52,30 +55,19 @@ const HomePage = ({ onProductClick, onNavigate, scrollTo }) => {
   }, []);
 
   useEffect(() => {
+    const scrollTo = location.state?.scrollTo;
     if (scrollTo === 'produtos' && produtosRef.current) {
       produtosRef.current.scrollIntoView({ behavior: 'smooth' });
     } else if (scrollTo === 'ofertas' && ofertasRef.current) {
       ofertasRef.current.scrollIntoView({ behavior: 'smooth' });
     }
-  }, [scrollTo]);
-
-  const handleNavigate = (section) => {
-    if (section === 'cadastro') {
-      onNavigate('cadastro');
-    } else if (section === 'home') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else if (section === 'produtos' && produtosRef.current) {
-      produtosRef.current.scrollIntoView({ behavior: 'smooth' });
-    } else if (section === 'ofertas' && ofertasRef.current) {
-      ofertasRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  }, [location.state]);
 
   const emOferta = produtos.filter((p) => p.emOferta);
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950 flex flex-col transition-colors duration-200">
-      <Navbar onNavigate={handleNavigate} />
+      <Navbar />
 
       {/* Hero */}
       <div className="relative bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-700 text-white overflow-hidden">
@@ -129,7 +121,7 @@ const HomePage = ({ onProductClick, onNavigate, scrollTo }) => {
                   <ProductCard
                     key={produto.id}
                     produto={produto}
-                    onClick={() => onProductClick(produto)}
+                    onClick={() => navigate(`/products/${produto.id}`)}
                   />
                 ))}
           </div>
@@ -164,7 +156,7 @@ const HomePage = ({ onProductClick, onNavigate, scrollTo }) => {
                 <ProductCard
                   key={produto.id}
                   produto={produto}
-                  onClick={() => onProductClick(produto)}
+                  onClick={() => navigate(`/products/${produto.id}`)}
                 />
               ))}
             </div>
@@ -172,7 +164,7 @@ const HomePage = ({ onProductClick, onNavigate, scrollTo }) => {
         )}
       </main>
 
-      <Footer onNavigate={handleNavigate} />
+      <Footer />
     </div>
   );
 };
